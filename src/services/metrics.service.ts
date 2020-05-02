@@ -2,8 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { IMetric } from "../models/metric.model";
 
 class MetricsService {
-    private static readonly API_URL =
-        "https://metrics-catalog-api.herokuapp.com/metrics/";
+    private static readonly API_URL = process.env.REACT_APP_API_URL;
 
     constructor(public host: string) {}
 

@@ -13,7 +13,11 @@ const Resource: React.FC<IProps> = ({ metric }) => (
             <div className="info" key={resource.name}>
                 <p className="info__content">
                     <span className="info__content__title">Name:</span>{" "}
-                    <a href={resource.name} target="_blank">
+                    <a
+                        href={resource.name}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {resource.name}
                     </a>
                 </p>

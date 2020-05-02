@@ -64,12 +64,22 @@ const Chart: React.FC<IProps> = ({ title, data, dates }) => {
                     },
                     xaxis: {
                         categories: dates,
+                        labels: {
+                            formatter: (date: Date): string =>
+                                new Date(date).toLocaleString(),
+                        },
+                    },
+                    yaxis: {
+                        labels: {
+                            formatter: (time: number): string =>
+                                time.toFixed(2),
+                        },
                     },
                 }}
                 series={[
                     {
                         name: title,
-                        data,
+                        data: chartData,
                     },
                 ]}
                 type="line"

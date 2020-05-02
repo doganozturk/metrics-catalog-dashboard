@@ -23,7 +23,7 @@ const MainPage: React.FC = () => {
     );
     const [dateMax, setDateMax] = React.useState<Date | null>(now);
 
-    const getMetrics = async () => {
+    const getMetrics = React.useCallback(async () => {
         if (!dateMin || !dateMax) {
             return;
         }
@@ -34,11 +34,11 @@ const MainPage: React.FC = () => {
         const data: IMetric[] = response.data;
 
         setMetrics(data);
-    };
+    }, [dateMin, dateMax]);
 
     React.useEffect(() => {
         getMetrics();
-    }, [dateMin, dateMax]);
+    }, [dateMin, dateMax, getMetrics]);
 
     const renderChart = (type: ChartType, title: string) => (
         <Chart
