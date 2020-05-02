@@ -1,4 +1,4 @@
-# MetricsCatalog.js
+# MetricsCatalog.Dashboard
 
 [![CircleCI](https://circleci.com/gh/doganozturk/metrics-catalog-js/tree/master.svg?style=shield&circle-token=cd068c8a9e6f1b5093de193726ef3b4eb1d4a0cb)](https://circleci.com/gh/doganozturk/metrics-catalog-js/tree/master)
 
