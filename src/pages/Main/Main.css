@@ -1,0 +1,20 @@
+.Main .container {
+    padding: 20px;
+    background-color: var(--color-cream);
+}
+
+.Main .chart-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.Main .chart-container__item {
+    flex-grow: 1;
+    width: 50%;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .Main .chart-container__item {
+        width: 100%;
+    }
+}

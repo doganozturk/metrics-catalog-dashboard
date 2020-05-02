@@ -1,0 +1,8 @@
+.Filters {
+    display: flex;
+    align-items: center;
+}
+
+.Filters .filter + .filter {
+    margin-left: 20px;
+}
