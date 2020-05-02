@@ -1,0 +1,31 @@
+.Resource {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--color-dark-purple);
+    border: 2px solid var(--color-blue);
+    border-radius: 4px;
+}
+.Resource .title {
+    font-size: var(--font-size-large);
+    color: var(--color-cream);
+}
+.Resource .info {
+    margin-top: 20px;
+    padding: 20px;
+    font-weight: bold;
+    line-height: 1.4;
+    color: #fff;
+    background-color: var(--color-blue);
+    border-radius: 4px;
+    overflow-x: auto;
+}
+.Resource .info__content {
+    width: max-content;
+    overflow-x: scroll;
+}
+.Resource .info__content__title {
+    display: inline-block;
+    width: 150px;
+    font-style: italic;
+    text-decoration: underline;
+}

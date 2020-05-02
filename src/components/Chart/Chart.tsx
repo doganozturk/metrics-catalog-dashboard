@@ -1,6 +1,10 @@
 import * as React from "react";
 import "./Chart.css";
 import ApexChart from "react-apexcharts";
+import { getCssVariable } from "../../util/get-css-variable";
+
+const colorLightPurple = getCssVariable("--color-light-purple");
+const colorGreen = getCssVariable("--color-green");
 
 interface IProps {
     title: string;
@@ -37,16 +41,20 @@ const Chart: React.FC<IProps> = ({ title, data, dates }) => {
                             show: false,
                         },
                     },
-                    colors: ["#706fd3"],
+                    colors: [colorGreen],
                     dataLabels: {
                         enabled: false,
                     },
                     stroke: {
-                        curve: "straight",
+                        curve: "smooth",
+                        width: 3,
                     },
                     title: {
                         text: title,
                         align: "left",
+                        style: {
+                            color: colorLightPurple,
+                        },
                     },
                     grid: {
                         row: {
@@ -60,7 +68,7 @@ const Chart: React.FC<IProps> = ({ title, data, dates }) => {
                 }}
                 series={[
                     {
-                        name: "Time to First Byte",
+                        name: title,
                         data,
                     },
                 ]}

@@ -6,6 +6,7 @@ import { AxiosResponse } from "axios";
 import Header from "../../components/Header/Header";
 import Filters from "../../components/Filters/Filters";
 import Chart from "../../components/Chart/Chart";
+import Resource from "../../components/Resource/Resource";
 
 enum ChartType {
     TTFB = "ttfb",
@@ -83,20 +84,13 @@ const MainPage: React.FC = () => {
                     </div>
                 </section>
                 <section className="container resource-container">
+                    {metrics.length ? (
+                        <h2 className="resource-container__title">
+                            RESOURCE METRICS
+                        </h2>
+                    ) : null}
                     {metrics.map((metric) => (
-                        <div className="resource-container__row">
-                            <h3 className="resource-container__row__title">
-                                {metric.date}
-                            </h3>
-                            {metric.resources.map((resource) => (
-                                <div className="resource-container__row__info">
-                                    <p>{resource.name}</p>
-                                    <p>{resource.startTime}</p>
-                                    <p>{resource.requestStart}</p>
-                                    <p>{resource.responseEnd}</p>
-                                </div>
-                            ))}
-                        </div>
+                        <Resource metric={metric} key={metric._id} />
                     ))}
                 </section>
             </main>

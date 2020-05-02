@@ -1,8 +1,34 @@
 .Filters {
     display: flex;
     align-items: center;
+    height: 40px;
+    padding: 10px 5px;
+    color: var(--color-cream);
+    background-color: var(--color-light-purple);
+    border-radius: 4px;
+    border: 2px solid var(--color-green);
 }
-
+.Filters .filter input,
+.Filters .filter label {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+.Filters .filter input {
+    padding: 0 5px;
+    border-radius: 4px;
+}
 .Filters .filter + .filter {
     margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .Filters {
+        flex-direction: column;
+        height: unset;
+    }
+    .Filters .filter + .filter {
+        margin-top: 10px;
+        margin-left: unset;
+    }
 }
