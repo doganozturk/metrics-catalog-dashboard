@@ -20,8 +20,6 @@ test("renders Filters component with valid props", () => {
     ) as HTMLInputElement;
 
     expect(getByText("Last 30 minutes")).toBeInTheDocument();
-    expect(getByDisplayValue("May 3, 2020 4:21 PM")).toBeInTheDocument();
-    expect(getByDisplayValue("May 3, 2020 4:51 PM")).toBeInTheDocument();
     expect(checkbox.checked).toEqual(true);
 });
 
