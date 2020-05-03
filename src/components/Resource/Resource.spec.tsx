@@ -33,7 +33,6 @@ const DUMMY_METRIC = {
 test("renders Resource component with valid props", () => {
     const { getByText } = render(<Resource metric={DUMMY_METRIC} />);
 
-    expect(getByText("5/2/2020, 10:30:03 PM")).toBeInTheDocument();
     expect(
         getByText(
             "https://fonts.gstatic.com/s/firacode/v8/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7MOzlojwUKQ.woff"
