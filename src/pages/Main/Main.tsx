@@ -7,6 +7,7 @@ import Header from "../../components/Header/Header";
 import Filters from "../../components/Filters/Filters";
 import Chart from "../../components/Chart/Chart";
 import Resource from "../../components/Resource/Resource";
+import { getHost } from "../../util/get-host";
 
 enum ChartType {
     TTFB = "ttfb",
@@ -16,6 +17,7 @@ enum ChartType {
 }
 
 const MainPage: React.FC = () => {
+    const host = getHost();
     const now = new Date();
     const [metrics, setMetrics] = React.useState<IMetric[]>([]);
     const [dateMin, setDateMin] = React.useState<Date | null>(
@@ -30,7 +32,7 @@ const MainPage: React.FC = () => {
 
         const response: AxiosResponse<
             IMetric[]
-        > = await metricsService.getMetrics(dateMin, dateMax);
+        > = await metricsService.getMetrics(host, dateMin, dateMax);
         const data: IMetric[] = response.data;
 
         setMetrics(data);
@@ -66,23 +68,31 @@ const MainPage: React.FC = () => {
                         setDateMax={setDateMax}
                     />
                 </section>
-                <section className="container chart-container">
-                    <div className="chart-container__item">
-                        {renderChart(ChartType.TTFB, "Time to First Byte")}
-                    </div>
-                    <div className="chart-container__item">
-                        {renderChart(ChartType.FCP, "First ContentFull Paint")}
-                    </div>
-                    <div className="chart-container__item">
-                        {renderChart(
-                            ChartType.DOM_CONTENT_LOADED,
-                            "DOM Content Loaded"
-                        )}
-                    </div>
-                    <div className="chart-container__item">
-                        {renderChart(ChartType.WINDOW_LOADED, "Window Loaded")}
-                    </div>
-                </section>
+                {metrics.length ? (
+                    <section className="container chart-container">
+                        <div className="chart-container__item">
+                            {renderChart(ChartType.TTFB, "Time to First Byte")}
+                        </div>
+                        <div className="chart-container__item">
+                            {renderChart(
+                                ChartType.FCP,
+                                "First ContentFull Paint"
+                            )}
+                        </div>
+                        <div className="chart-container__item">
+                            {renderChart(
+                                ChartType.DOM_CONTENT_LOADED,
+                                "DOM Content Loaded"
+                            )}
+                        </div>
+                        <div className="chart-container__item">
+                            {renderChart(
+                                ChartType.WINDOW_LOADED,
+                                "Window Loaded"
+                            )}
+                        </div>
+                    </section>
+                ) : null}
                 <section className="container resource-container">
                     {metrics.length ? (
                         <h2 className="resource-container__title">

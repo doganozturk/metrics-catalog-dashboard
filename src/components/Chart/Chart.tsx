@@ -12,81 +12,72 @@ interface IProps {
     dates: Date[];
 }
 
-const Chart: React.FC<IProps> = ({ title, data, dates }) => {
-    const [chartData, setChartData] = React.useState<number[]>(data);
-
-    React.useEffect(() => {
-        setChartData(data);
-    }, [data]);
-
-    return (
-        <div className="Chart">
-            <ApexChart
-                options={{
-                    chart: {
-                        height: 350,
-                        type: "line",
-                        zoom: {
-                            enabled: false,
-                        },
-                        dropShadow: {
-                            enabled: true,
-                            color: "#000",
-                            top: 18,
-                            left: 7,
-                            blur: 10,
-                            opacity: 0.2,
-                        },
-                        toolbar: {
-                            show: false,
-                        },
-                    },
-                    colors: [colorGreen],
-                    dataLabels: {
+const Chart: React.FC<IProps> = ({ title, data, dates }) => (
+    <div className="Chart">
+        <ApexChart
+            options={{
+                chart: {
+                    height: 350,
+                    type: "line",
+                    zoom: {
                         enabled: false,
                     },
-                    stroke: {
-                        curve: "smooth",
-                        width: 3,
+                    dropShadow: {
+                        enabled: true,
+                        color: "#000",
+                        top: 18,
+                        left: 7,
+                        blur: 10,
+                        opacity: 0.2,
                     },
-                    title: {
-                        text: title,
-                        align: "left",
-                        style: {
-                            color: colorLightPurple,
-                        },
+                    toolbar: {
+                        show: false,
                     },
-                    grid: {
-                        row: {
-                            colors: ["#f3f3f3", "transparent"],
-                            opacity: 0.5,
-                        },
+                },
+                colors: [colorGreen],
+                dataLabels: {
+                    enabled: false,
+                },
+                stroke: {
+                    curve: "smooth",
+                    width: 3,
+                },
+                title: {
+                    text: title,
+                    align: "left",
+                    style: {
+                        color: colorLightPurple,
                     },
-                    xaxis: {
-                        categories: dates,
-                        labels: {
-                            formatter: (date: Date): string =>
-                                new Date(date).toLocaleString(),
-                        },
+                },
+                grid: {
+                    row: {
+                        colors: ["#f3f3f3", "transparent"],
+                        opacity: 0.5,
                     },
-                    yaxis: {
-                        labels: {
-                            formatter: (time: number): string =>
-                                time.toFixed(2),
-                        },
+                },
+                xaxis: {
+                    categories: dates,
+                    labels: {
+                        formatter: (date: Date): string =>
+                            new Date(date).toLocaleString(),
                     },
-                }}
-                series={[
-                    {
-                        name: title,
-                        data: chartData,
+                },
+                yaxis: {
+                    labels: {
+                        formatter: (time: number): string => time.toFixed(2),
                     },
-                ]}
-                type="line"
-                height={350}
-            />
-        </div>
-    );
-};
+                },
+            }}
+            series={[
+                {
+                    name: title,
+                    data,
+                },
+            ]}
+            type="line"
+            height={350}
+        />
+    </div>
+);
 
 export default Chart;

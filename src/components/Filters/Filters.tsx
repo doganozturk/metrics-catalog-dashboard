@@ -1,7 +1,6 @@
 import * as React from "react";
 import "./Filters.css";
 import DatePicker from "react-datepicker";
-import debounce from "lodash.debounce";
 import "react-datepicker/dist/react-datepicker.css";
 
 interface IProps {
@@ -19,7 +18,7 @@ const Filters: React.FC<IProps> = ({
 }) => {
     const [last30Minutes, setLast30Minutes] = React.useState<boolean>(true);
 
-    const onInputChange = debounce(() => {
+    const onInputChange = () => {
         const now = new Date();
         const nowMinus30 = new Date(now.getTime() - 30 * 60000);
 
@@ -29,7 +28,7 @@ const Filters: React.FC<IProps> = ({
             setDateMin(nowMinus30);
             setDateMax(now);
         }
-    }, 200);
+    };
 
     const onDateChange = (
         date: Date,
