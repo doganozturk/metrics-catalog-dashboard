@@ -46,7 +46,7 @@ jobs:
                     command: sudo npm install --global --unsafe-perm now
             -   run:
                     name: Publish package
-                    command: now --token $ZEIT_TOKEN
+                    command: now --token=$ZEIT_TOKEN
 
 workflows:
     version: 2
