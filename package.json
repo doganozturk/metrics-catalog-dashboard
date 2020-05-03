@@ -1,7 +1,7 @@
 {
     "name": "metrics-catalog-dashboard",
     "description": "MetricsCatalog.Dashboard is a simple SPA for visualizing data from MetricsCatalog.API.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Doğan Öztürk",
     "license": "MIT",
     "bugs": "https://github.com/doganozturk/metrics-catalog-dashboard/issues",
