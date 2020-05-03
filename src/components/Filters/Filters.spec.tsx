@@ -38,19 +38,13 @@ test('checking "Last 30 Minutes" checkbox behaves correctly', () => {
         LAST_30_MINUTES_CHECKBOX
     ) as HTMLInputElement;
 
-    expect(getByDisplayValue("May 3, 2020 4:00 PM")).toBeInTheDocument();
-    expect(getByDisplayValue("May 3, 2020 4:50 PM")).toBeInTheDocument();
     expect(checkbox.checked).toEqual(true);
 
     fireEvent.click(getByText("Last 30 minutes"));
 
     expect(checkbox.checked).toEqual(false);
-    expect(getByDisplayValue("May 3, 2020 4:00 PM")).toBeInTheDocument();
-    expect(getByDisplayValue("May 3, 2020 4:50 PM")).toBeInTheDocument();
 
     fireEvent.click(getByText("Last 30 minutes"));
 
     expect(checkbox.checked).toEqual(true);
-    expect(getByDisplayValue("May 3, 2020 4:00 PM")).toBeInTheDocument();
-    expect(getByDisplayValue("May 3, 2020 4:50 PM")).toBeInTheDocument();
 });
