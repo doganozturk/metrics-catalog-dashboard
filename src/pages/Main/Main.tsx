@@ -36,11 +36,11 @@ const MainPage: React.FC = () => {
         const data: IMetric[] = response.data;
 
         setMetrics(data);
-    }, [dateMin, dateMax]);
+    }, [host, dateMin, dateMax]);
 
     React.useEffect(() => {
         getMetrics();
-    }, [dateMin, dateMax, getMetrics]);
+    }, [host, dateMin, dateMax, getMetrics]);
 
     const renderChart = (type: ChartType, title: string) => (
         <Chart
@@ -60,49 +60,64 @@ const MainPage: React.FC = () => {
         <div className="Main">
             <Header />
             <main>
-                <section className="container">
-                    <Filters
-                        dateMin={dateMin}
-                        dateMax={dateMax}
-                        setDateMin={setDateMin}
-                        setDateMax={setDateMax}
-                    />
-                </section>
-                {metrics.length ? (
-                    <section className="container chart-container">
-                        <div className="chart-container__item">
-                            {renderChart(ChartType.TTFB, "Time to First Byte")}
-                        </div>
-                        <div className="chart-container__item">
-                            {renderChart(
-                                ChartType.FCP,
-                                "First ContentFull Paint"
-                            )}
-                        </div>
-                        <div className="chart-container__item">
-                            {renderChart(
-                                ChartType.DOM_CONTENT_LOADED,
-                                "DOM Content Loaded"
-                            )}
-                        </div>
-                        <div className="chart-container__item">
-                            {renderChart(
-                                ChartType.WINDOW_LOADED,
-                                "Window Loaded"
-                            )}
-                        </div>
+                {!host ? (
+                    <section className="container">
+                        <h1>
+                            Please provide a valid 'host' such as
+                            'https://metrics-catalog-dashboard.now.sh/doganozturk.dev'.
+                        </h1>
                     </section>
                 ) : null}
-                <section className="container resource-container">
-                    {metrics.length ? (
-                        <h2 className="resource-container__title">
-                            RESOURCE METRICS
-                        </h2>
-                    ) : null}
-                    {metrics.map((metric) => (
-                        <Resource metric={metric} key={metric._id} />
-                    ))}
-                </section>
+                {host ? (
+                    <React.Fragment>
+                        <section className="container">
+                            <Filters
+                                dateMin={dateMin}
+                                dateMax={dateMax}
+                                setDateMin={setDateMin}
+                                setDateMax={setDateMax}
+                            />
+                        </section>
+                        {metrics.length ? (
+                            <section className="container chart-container">
+                                <div className="chart-container__item">
+                                    {renderChart(
+                                        ChartType.TTFB,
+                                        "Time to First Byte"
+                                    )}
+                                </div>
+                                <div className="chart-container__item">
+                                    {renderChart(
+                                        ChartType.FCP,
+                                        "First ContentFull Paint"
+                                    )}
+                                </div>
+                                <div className="chart-container__item">
+                                    {renderChart(
+                                        ChartType.DOM_CONTENT_LOADED,
+                                        "DOM Content Loaded"
+                                    )}
+                                </div>
+                                <div className="chart-container__item">
+                                    {renderChart(
+                                        ChartType.WINDOW_LOADED,
+                                        "Window Loaded"
+                                    )}
+                                </div>
+                            </section>
+                        ) : null}
+                        <section className="container resource-container">
+                            {metrics.length ? (
+                                <h2 className="resource-container__title">
+                                    RESOURCE METRICS
+                                </h2>
+                            ) : null}
+                            {metrics.map((metric) => (
+                                <Resource metric={metric} key={metric._id} />
+                            ))}
+                        </section>
+                    </React.Fragment>
+                ) : null}
             </main>
         </div>
     );
