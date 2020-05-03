@@ -1,5 +1,7 @@
 # MetricsCatalog.Dashboard
 
+[![CircleCI](https://circleci.com/gh/doganozturk/metrics-catalog-dashboard/tree/master.svg?style=shield&circle-token=cd068c8a9e6f1b5093de193726ef3b4eb1d4a0cb)](https://circleci.com/gh/doganozturk/metrics-catalog-dashboard/tree/master)
+
 `metrics-catalog-dashboard` is a simple React app for visualizing analytics data such as TTFB, FCP etc. which is provided by [metrics-catalog-api](https://metrics-catalog-api.herokuapp.com/metrics/).
 
 ## Features
