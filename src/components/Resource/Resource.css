@@ -12,7 +12,6 @@
 .Resource .info {
     margin-top: 20px;
     padding: 20px;
-    font-weight: bold;
     line-height: 1.4;
     color: #fff;
     background-color: var(--color-blue);

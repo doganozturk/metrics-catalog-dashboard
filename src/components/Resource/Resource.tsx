@@ -23,15 +23,15 @@ const Resource: React.FC<IProps> = ({ metric }) => (
                 </p>
                 <p className="info__content">
                     <span className="info__content__title">Start Time:</span>{" "}
-                    {resource.startTime}
+                    {resource.startTime.toFixed(2)}
                 </p>
                 <p className="info__content">
                     <span className="info__content__title">Request Start:</span>{" "}
-                    {resource.requestStart}
+                    {resource.requestStart.toFixed(2)}
                 </p>
                 <p className="info__content">
                     <span className="info__content__title">Response End:</span>{" "}
-                    {resource.responseEnd}
+                    {resource.responseEnd.toFixed(2)}
                 </p>
             </div>
         ))}
