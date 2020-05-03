@@ -46,6 +46,7 @@ const Filters: React.FC<IProps> = ({
                         type="checkbox"
                         checked={last30Minutes}
                         onChange={onInputChange}
+                        data-testid="last30MinutesCheckbox"
                     />
                     Last 30 minutes
                 </label>
