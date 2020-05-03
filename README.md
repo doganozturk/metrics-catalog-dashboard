@@ -9,6 +9,19 @@
 - It shows last 30 minute's performance data from a given host on default.
 - User can change date range filter to take a look at any given time range.
 
+## Get Started
+You should provide a valid `host` parameter for url, such as `https://metrics-catalog-dashboard.now.sh/doganozturk.dev`. That parameter comes from defined host in `metrics-catalog-js` library init action. So if your site is `blabla.com` and you want to use this project, you should init `metrics-catalog-js` lib. in `blabla.com` like that:
+
+```javascript
+const metricsCatalog = new MetricsCatalog({
+    host: 'blabla.com',
+});
+
+metricsCatalog.init();
+```
+
+Then you should access this dashboard through `https://metrics-catalog-dashboard.now.sh/blabla.com`
+
 ## Local development setup
 1. Download the repository.
 2. Get Node.js v12.16.3 and install it if you haven't already.
