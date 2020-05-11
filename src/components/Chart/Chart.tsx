@@ -20,7 +20,7 @@ function apexChartOptionsFactory(title: string, dates: Date[]) {
             zoom: {
                 enabled: false,
             },
-            drophadow: {
+            dropShadow: {
                 enabled: true,
                 color: "#000",
                 top: 18,
