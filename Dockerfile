@@ -1,6 +1,6 @@
 FROM node:lts
 COPY . /app
 WORKDIR /app
-RUN npm install
+RUN yarn
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
